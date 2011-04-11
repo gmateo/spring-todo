@@ -1,0 +1,7 @@
+CREATE TABLE items
+(
+id bigint,
+description varchar(255)
+)
+
+insert into items(id, description) values (1, 'My First Item')
