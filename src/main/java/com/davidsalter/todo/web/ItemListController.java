@@ -1,3 +1,6 @@
+/*
+ * Simple Spring based To Do list.
+ */
 package com.davidsalter.todo.web;
 
 import java.util.HashMap;
@@ -15,7 +18,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.davidsalter.todo.domain.ItemManager;
 
-
 @Controller
 @RequestMapping("/items.htm")
 public class ItemListController {
@@ -25,11 +27,12 @@ public class ItemListController {
 	@Autowired
 	private ItemManager itemManager;
 
-	@RequestMapping(method=RequestMethod.GET)
+	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView handleRequest() {
 		String now = (new java.util.Date()).toString();
 		logger.info("returning hello view with " + now);
-		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		User user = (User) SecurityContextHolder.getContext()
+				.getAuthentication().getPrincipal();
 
 		Map<String, Object> myModel = new HashMap<String, Object>();
 		myModel.put("now", now);

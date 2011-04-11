@@ -1,3 +1,6 @@
+/*
+ * Simple Spring based To Do list.
+ */
 package com.davidsalter.todo.web;
 
 import java.util.LinkedHashMap;
@@ -16,50 +19,51 @@ import com.davidsalter.todo.domain.Item;
 import com.davidsalter.todo.domain.ItemManager;
 import com.davidsalter.todo.service.ItemValidator;
 
-@Controller 
+@Controller
 @SessionAttributes("priorityList")
-@RequestMapping("/addItem.htm") 
-public class AddItemFormController { 
- 
-    @Autowired
-    private ItemValidator addItemValidator;
+@RequestMapping("/addItem.htm")
+public class AddItemFormController {
 
-    @Autowired
-    private ItemManager itemManager;
-    
-    @RequestMapping(method=RequestMethod.POST) 
-    public String onSubmit(@ModelAttribute("item")Item item, 
-        BindingResult result) { 
-         
-        addItemValidator.validate(item, result);
-        if (result.hasErrors())
-        	return "addItem";
+	@Autowired
+	private ItemValidator addItemValidator;
 
-/*        Item item = new Item();
-        item.setDescription(addItem.getDescription());
-        item.setDueDate(addItem.getDueDate());
-        item.setPriority(addItem.getPriority());
-*/        itemManager.saveItem(item);
-        return "redirect:items.htm"; 
-    } 
-     
-    @RequestMapping(method=RequestMethod.GET) 
-    public String initializeForm(ModelMap model) { 
-        // Perform and Model / Form initialization 
-        Item item = new Item();
-        item.setDescription("");	// Default new description to "".
-        item.setPriority(2);		// Default priority to medium.
+	@Autowired
+	private ItemManager itemManager;
 
-        model.addAttribute("item", item);
-        
-        Map<Integer,String> priority = new LinkedHashMap<Integer,String>();
-    	priority.put(1, "Low");
-    	priority.put(2, "Normal");
-    	priority.put(3, "High");
+	@RequestMapping(method = RequestMethod.POST)
+	public String onSubmit(@ModelAttribute("item") Item item,
+			BindingResult result) {
 
-    	model.addAttribute("priorityList", priority);
-        return "addItem"; 
-    } 
- 
-    // Other getters and setters an needed. 
-} 
+		addItemValidator.validate(item, result);
+		if (result.hasErrors())
+			return "addItem";
+
+		/*
+		 * Item item = new Item();
+		 * item.setDescription(addItem.getDescription());
+		 * item.setDueDate(addItem.getDueDate());
+		 * item.setPriority(addItem.getPriority());
+		 */itemManager.saveItem(item);
+		return "redirect:items.htm";
+	}
+
+	@RequestMapping(method = RequestMethod.GET)
+	public String initializeForm(ModelMap model) {
+		// Perform and Model / Form initialization
+		Item item = new Item();
+		item.setDescription(""); // Default new description to "".
+		item.setPriority(2); // Default priority to medium.
+
+		model.addAttribute("item", item);
+
+		Map<Integer, String> priority = new LinkedHashMap<Integer, String>();
+		priority.put(1, "Low");
+		priority.put(2, "Normal");
+		priority.put(3, "High");
+
+		model.addAttribute("priorityList", priority);
+		return "addItem";
+	}
+
+	// Other getters and setters an needed.
+}

@@ -1,3 +1,6 @@
+/*
+ * Simple Spring based To Do list.
+ */
 package com.davidsalter.todo.web;
 
 import java.util.HashMap;
@@ -25,15 +28,16 @@ public class DeleteItemController {
 	@Autowired
 	private ItemManager itemManager;
 
-	@RequestMapping(method=RequestMethod.GET)
+	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView handleRequest(@RequestParam("itemId") String itemId) {
 		String now = (new java.util.Date()).toString();
 		logger.info("returning hello view with " + now);
-		
-		logger.info("Deleting item:"+itemId);
+
+		logger.info("Deleting item:" + itemId);
 		itemManager.deleteItem(itemId);
 
-		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		User user = (User) SecurityContextHolder.getContext()
+				.getAuthentication().getPrincipal();
 
 		Map<String, Object> myModel = new HashMap<String, Object>();
 		myModel.put("now", now);

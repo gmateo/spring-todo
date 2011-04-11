@@ -1,3 +1,6 @@
+/*
+ * Simple Spring based To Do list.
+ */
 package com.davidsalter.todo.web;
 
 import java.util.LinkedHashMap;
@@ -37,11 +40,12 @@ public class UpdateItemFormController {
 		if (result.hasErrors())
 			return "addItem";
 
-/*		//Item item = itemManager.find(addItem.getId());
-		item.setDescription(addItem.getDescription());
-		item.setDueDate(addItem.getDueDate());
-		item.setPriority(addItem.getPriority());
-*/		itemManager.updateItem(item);
+		/*
+		 * //Item item = itemManager.find(addItem.getId());
+		 * item.setDescription(addItem.getDescription());
+		 * item.setDueDate(addItem.getDueDate());
+		 * item.setPriority(addItem.getPriority());
+		 */itemManager.updateItem(item);
 		return "redirect:items.htm";
 	}
 
@@ -50,7 +54,7 @@ public class UpdateItemFormController {
 			@RequestParam("itemId") String itemId) {
 		// Perform and Model / Form initialization
 		Item item = itemManager.find(Long.parseLong(itemId));
-		model.addAttribute("item",item);
+		model.addAttribute("item", item);
 
 		Map<Integer, String> priority = new LinkedHashMap<Integer, String>();
 		priority.put(1, "Low");
