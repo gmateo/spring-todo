@@ -29,7 +29,8 @@ public class ItemValidator implements Validator {
 		} else {
 			logger.info("Validating with " + addItem + ": "
 					+ addItem.getDescription());
-			if (addItem.getDescription().length() == 0) {
+			if (addItem.getDescription() == null
+					|| addItem.getDescription().length() == 0) {
 				errors.rejectValue("description", "error.no-description", null);
 			}
 		}

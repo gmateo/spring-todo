@@ -25,7 +25,7 @@ import com.davidsalter.todo.service.ItemValidator;
 public class AddItemFormController {
 
 	@Autowired
-	private ItemValidator addItemValidator;
+	private ItemValidator itemValidator;
 
 	@Autowired
 	private ItemManager itemManager;
@@ -34,7 +34,7 @@ public class AddItemFormController {
 	public String onSubmit(@ModelAttribute("item") Item item,
 			BindingResult result) {
 
-		addItemValidator.validate(item, result);
+		itemValidator.validate(item, result);
 		if (result.hasErrors())
 			return "addItem";
 
@@ -65,5 +65,11 @@ public class AddItemFormController {
 		return "addItem";
 	}
 
-	// Other getters and setters an needed.
+	public void setItemManager(ItemManager itemManager) {
+		this.itemManager = itemManager;
+	}
+
+	public void setItemValidator(ItemValidator itemValidator) {
+		this.itemValidator = itemValidator;
+	}
 }
