@@ -7,6 +7,12 @@ import java.util.List;
 
 import com.davidsalter.todo.domain.Item;
 
+/**
+ * DAO Interface for the Item entity class.
+ * 
+ * @author david@davidsalter.co.uk
+ * 
+ */
 public interface ItemDao {
 
 	public Item find(long id);
@@ -22,5 +28,4 @@ public interface ItemDao {
 	public void saveItem(Item item);
 
 	public void updateItem(Item item);
-
 }

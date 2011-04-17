@@ -20,13 +20,19 @@ import com.davidsalter.todo.domain.Item;
 import com.davidsalter.todo.domain.ItemManager;
 import com.davidsalter.todo.service.ItemValidator;
 
+/**
+ * Web controller responsible for updating items.
+ * 
+ * @author david@davidsalter.co.uk
+ * 
+ */
 @Controller
 @SessionAttributes("priorityList")
 @RequestMapping("/updateItem.htm")
 public class UpdateItemFormController {
 
 	@Autowired
-	private ItemValidator addItemValidator;
+	private ItemValidator itemValidator;
 
 	@Autowired
 	private ItemManager itemManager;
@@ -36,16 +42,11 @@ public class UpdateItemFormController {
 			BindingResult result) {
 
 		System.out.println("Updating item");
-		addItemValidator.validate(item, result);
+		itemValidator.validate(item, result);
 		if (result.hasErrors())
-			return "addItem";
+			return "editItem";
 
-		/*
-		 * //Item item = itemManager.find(addItem.getId());
-		 * item.setDescription(addItem.getDescription());
-		 * item.setDueDate(addItem.getDueDate());
-		 * item.setPriority(addItem.getPriority());
-		 */itemManager.updateItem(item);
+		itemManager.updateItem(item);
 		return "redirect:items.htm";
 	}
 
@@ -63,5 +64,13 @@ public class UpdateItemFormController {
 
 		model.addAttribute("priorityList", priority);
 		return "editItem";
+	}
+
+	public void setItemManager(ItemManager itemManager) {
+		this.itemManager = itemManager;
+	}
+
+	public void setItemValidator(ItemValidator itemValidator) {
+		this.itemValidator = itemValidator;
 	}
 }

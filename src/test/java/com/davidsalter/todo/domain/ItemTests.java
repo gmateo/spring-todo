@@ -9,6 +9,12 @@ import java.util.Date;
 
 import org.junit.Test;
 
+/**
+ * Tests for the Item class
+ * 
+ * @author david@davidsalter.co.uk
+ * @see Item
+ */
 public class ItemTests {
 
 	@Test

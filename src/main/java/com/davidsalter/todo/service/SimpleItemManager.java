@@ -7,17 +7,25 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.davidsalter.todo.domain.Item;
 import com.davidsalter.todo.domain.ItemManager;
 import com.davidsalter.todo.repository.ItemDao;
 
+/**
+ * Item manager service layer.
+ * 
+ * @author david@davidsalter.co.uk
+ * 
+ */
 @Component
 public class SimpleItemManager implements ItemManager {
 
 	@Autowired
 	private ItemDao itemDao;
 
+	@Transactional(readOnly = true)
 	public Item find(long itemId) {
 		return itemDao.find(itemId);
 	}
@@ -26,6 +34,7 @@ public class SimpleItemManager implements ItemManager {
 		return itemDao.getItemList();
 	}
 
+	@Transactional
 	public void saveItem(Item item) {
 		itemDao.saveItem(item);
 	}

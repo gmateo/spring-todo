@@ -7,6 +7,12 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+/**
+ * Tests for the LogoutController class
+ * 
+ * @author david@davidsalter.co.uk
+ * @see LogoutController
+ */
 public class LogoutControllerTests {
 
 	@Test

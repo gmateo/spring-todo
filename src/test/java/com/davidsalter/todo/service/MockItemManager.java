@@ -9,6 +9,13 @@ import java.util.List;
 import com.davidsalter.todo.domain.Item;
 import com.davidsalter.todo.domain.ItemManager;
 
+/**
+ * Mock Item Manager to allow testing of web controllers without a real
+ * database.
+ * 
+ * @author david@davidsalter.co.uk
+ * @see ItemManager
+ */
 public class MockItemManager implements ItemManager {
 
 	private List<Item> items = null;

@@ -18,18 +18,18 @@ import com.davidsalter.todo.service.ItemValidator;
 import com.davidsalter.todo.service.MockItemManager;
 
 /**
- * Tests for the AddItemFormController class
+ * Tests for the UpdateItemFormController class
  * 
  * @author david@davidsalter.co.uk
- * @see AddItemFormController
+ * @see UpdateItemFormController
  */
-public class AddItemFormControllerTests {
+public class UpdateItemFormControllerTests {
 
-	private AddItemFormController controller;
+	private UpdateItemFormController controller;
 
 	@Before
 	public void setup() {
-		controller = new AddItemFormController();
+		controller = new UpdateItemFormController();
 		controller.setItemManager(new MockItemManager());
 		controller.setItemValidator(new ItemValidator());
 	}
@@ -48,25 +48,21 @@ public class AddItemFormControllerTests {
 		Item item = new Item();
 		BindingResult br = new BindException(item, "item");
 		String result = controller.onSubmit(item, br);
-		assertEquals("addItem", result);
+		assertEquals("editItem", result);
 	}
 
 	@Test
 	public void testInitializeFormView() throws Exception {
 		ModelMap map = new ModelMap();
-		String result = controller.initializeForm(map);
-		assertEquals("addItem", result);
+		String result = controller.initializeForm(map, "1");
+		assertEquals("editItem", result);
 	}
 
 	@Test
 	public void testInitializeFormMap() throws Exception {
 		ModelMap map = new ModelMap();
-		String result = controller.initializeForm(map);
+		String result = controller.initializeForm(map, "1");
 		assertEquals(2, map.size());
-
-		Item item = (Item) map.get("item");
-		assertEquals(item.getDescription(), "");
-		assertEquals(item.getPriority(), 2);
 
 		Map<Integer, String> priorityList = (Map<Integer, String>) map
 				.get("priorityList");

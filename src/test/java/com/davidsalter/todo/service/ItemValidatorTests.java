@@ -16,6 +16,12 @@ import org.springframework.validation.FieldError;
 
 import com.davidsalter.todo.domain.Item;
 
+/**
+ * Tests for the ItemValidator class
+ * 
+ * @author david@davidsalter.co.uk
+ * @see ItemValidator
+ */
 public class ItemValidatorTests {
 
 	@Test

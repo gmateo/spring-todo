@@ -21,6 +21,12 @@ import org.springframework.web.servlet.ModelAndView;
 import com.davidsalter.todo.domain.Item;
 import com.davidsalter.todo.service.MockItemManager;
 
+/**
+ * Tests for the ItemListController class
+ * 
+ * @author david@davidsalter.co.uk
+ * @see ItemListController
+ */
 public class ItemListControllerTests {
 
 	private ItemListController controller;
