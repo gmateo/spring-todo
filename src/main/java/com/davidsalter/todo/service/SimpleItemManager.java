@@ -30,6 +30,7 @@ public class SimpleItemManager implements ItemManager {
 		return itemDao.find(itemId);
 	}
 
+	@Transactional
 	public List<Item> getItems() {
 		return itemDao.getItemList();
 	}
@@ -39,18 +40,22 @@ public class SimpleItemManager implements ItemManager {
 		itemDao.saveItem(item);
 	}
 
+	@Transactional
 	public void deleteItem(String itemId) {
 		itemDao.deleteItem(itemId);
 	}
 
+	@Transactional
 	public void updateItem(Item item) {
 		itemDao.updateItem(item);
 	}
 
+	@Transactional(readOnly = true)
 	public int getOverdueCount() {
 		return itemDao.getOverdueCount();
 	}
 
+	@Transactional(readOnly = true)
 	public int getItemCount() {
 		return itemDao.getItemCount();
 	}
