@@ -12,7 +12,7 @@ public interface ItemManager extends Serializable {
 
 	public List<Item> getItems();
 
-	public void deleteItem(String itemId);
+	public void deleteItem(long itemId);
 
 	public void saveItem(Item item);
 

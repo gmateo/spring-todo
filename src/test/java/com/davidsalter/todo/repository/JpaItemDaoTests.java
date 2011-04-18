@@ -63,7 +63,7 @@ public class JpaItemDaoTests extends
 		List<Item> items = itemDao.getItemList();
 		assertEquals(items.size(), 3);
 		Item item = itemDao.find(items.get(0).getId());
-		itemDao.deleteItem("" + item.getId());
+		itemDao.deleteItem(item.getId());
 		items = itemDao.getItemList();
 		assertEquals(items.size(), 2);
 	}

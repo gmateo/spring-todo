@@ -29,7 +29,7 @@ public class DeleteItemControllerTests {
 
 	@Test
 	public void testHandleRequest() throws Exception {
-		String result = controller.handleRequest("7");
+		String result = controller.handleRequest(7L);
 		assertEquals("redirect:items.htm", result);
 	}
 }

@@ -37,7 +37,7 @@ public class JpaItemDao implements ItemDao {
 		return query.getResultList();
 	}
 
-	public void deleteItem(String itemId) {
+	public void deleteItem(long itemId) {
 		Item toDelete = entityManager.find(Item.class, new Long(itemId));
 		entityManager.remove(toDelete);
 	}

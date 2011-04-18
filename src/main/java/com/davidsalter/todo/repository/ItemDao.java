@@ -19,7 +19,7 @@ public interface ItemDao {
 
 	public List<Item> getItemList();
 
-	public void deleteItem(String itemId);
+	public void deleteItem(long itemId);
 
 	public int getItemCount();
 

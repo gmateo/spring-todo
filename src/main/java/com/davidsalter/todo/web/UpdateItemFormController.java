@@ -52,9 +52,9 @@ public class UpdateItemFormController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String initializeForm(ModelMap model,
-			@RequestParam("itemId") String itemId) {
+			@RequestParam("itemId") Long itemId) {
 		// Perform and Model / Form initialization
-		Item item = itemManager.find(Long.parseLong(itemId));
+		Item item = itemManager.find(itemId);
 		model.addAttribute("item", item);
 
 		Map<Integer, String> priority = new LinkedHashMap<Integer, String>();

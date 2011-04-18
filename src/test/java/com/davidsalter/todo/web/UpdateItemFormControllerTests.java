@@ -54,19 +54,18 @@ public class UpdateItemFormControllerTests {
 	@Test
 	public void testInitializeFormView() throws Exception {
 		ModelMap map = new ModelMap();
-		String result = controller.initializeForm(map, "1");
+		String result = controller.initializeForm(map, 1L);
 		assertEquals("editItem", result);
 	}
 
 	@Test
 	public void testInitializeFormMap() throws Exception {
 		ModelMap map = new ModelMap();
-		String result = controller.initializeForm(map, "1");
+		String result = controller.initializeForm(map, 1L);
 		assertEquals(2, map.size());
 
 		Map<Integer, String> priorityList = (Map<Integer, String>) map
 				.get("priorityList");
 		assertEquals(priorityList.size(), 3);
 	}
-
 }

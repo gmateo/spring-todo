@@ -41,7 +41,7 @@ public class SimpleItemManager implements ItemManager {
 	}
 
 	@Transactional
-	public void deleteItem(String itemId) {
+	public void deleteItem(long itemId) {
 		itemDao.deleteItem(itemId);
 	}
 

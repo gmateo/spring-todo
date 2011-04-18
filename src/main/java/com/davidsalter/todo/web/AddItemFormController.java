@@ -38,12 +38,7 @@ public class AddItemFormController {
 		if (result.hasErrors())
 			return "addItem";
 
-		/*
-		 * Item item = new Item();
-		 * item.setDescription(addItem.getDescription());
-		 * item.setDueDate(addItem.getDueDate());
-		 * item.setPriority(addItem.getPriority());
-		 */itemManager.saveItem(item);
+		itemManager.saveItem(item);
 		return "redirect:items.htm";
 	}
 

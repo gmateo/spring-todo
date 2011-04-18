@@ -37,7 +37,7 @@ public class MockItemManager implements ItemManager {
 		return items;
 	}
 
-	public void deleteItem(String itemId) {
+	public void deleteItem(long itemId) {
 		// TODO Auto-generated method stub
 
 	}

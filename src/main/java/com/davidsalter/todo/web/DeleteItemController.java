@@ -29,7 +29,7 @@ public class DeleteItemController {
 	private ItemManager itemManager;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public String handleRequest(@RequestParam("itemId") String itemId) {
+	public String handleRequest(@RequestParam("itemId") Long itemId) {
 		logger.info("Deleting item:" + itemId);
 		itemManager.deleteItem(itemId);
 
