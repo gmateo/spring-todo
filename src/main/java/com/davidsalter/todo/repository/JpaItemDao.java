@@ -9,13 +9,17 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 
 import com.davidsalter.todo.domain.Item;
 
 /**
  * JPA Implementation of the ItemDao interface responsible for database
- * persistence using JPA.
+ * persistence using JPA. Spring Cacheing is used to eliminate database reads.
  * 
  * @author david@davidsalter.co.uk
  * 
@@ -23,9 +27,12 @@ import com.davidsalter.todo.domain.Item;
 @Component
 public class JpaItemDao implements ItemDao {
 
+	protected final Log logger = LogFactory.getLog(getClass());
+
 	@PersistenceContext
 	private EntityManager entityManager;
 
+	@Cacheable(value = "items", key = "#itemId")
 	public Item find(long itemId) {
 		Item item = entityManager.find(Item.class, itemId);
 		return item;
@@ -37,6 +44,7 @@ public class JpaItemDao implements ItemDao {
 		return query.getResultList();
 	}
 
+	@CacheEvict(value = "items")
 	public void deleteItem(long itemId) {
 		Item toDelete = entityManager.find(Item.class, new Long(itemId));
 		entityManager.remove(toDelete);
@@ -46,6 +54,7 @@ public class JpaItemDao implements ItemDao {
 		entityManager.persist(item);
 	}
 
+	@CacheEvict(value = "items", key = "#item.id")
 	public void updateItem(Item item) {
 		entityManager.merge(item);
 	}
