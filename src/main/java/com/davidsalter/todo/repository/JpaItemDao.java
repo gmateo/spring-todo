@@ -13,7 +13,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import com.davidsalter.todo.domain.Item;
 
@@ -24,7 +24,7 @@ import com.davidsalter.todo.domain.Item;
  * @author david@davidsalter.co.uk
  * 
  */
-@Component
+@Repository
 public class JpaItemDao implements ItemDao {
 
 	protected final Log logger = LogFactory.getLog(getClass());

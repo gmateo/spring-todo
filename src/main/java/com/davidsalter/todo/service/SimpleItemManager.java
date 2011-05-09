@@ -6,7 +6,7 @@ package com.davidsalter.todo.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.davidsalter.todo.domain.Item;
@@ -19,7 +19,7 @@ import com.davidsalter.todo.repository.ItemDao;
  * @author david@davidsalter.co.uk
  * 
  */
-@Component
+@Service
 public class SimpleItemManager implements ItemManager {
 
 	@Autowired
